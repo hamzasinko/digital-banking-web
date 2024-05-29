@@ -7,37 +7,43 @@
           <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchCustomers()">
             <div class="input-group">
               <label class="input-group-text">Keyword</label>
-              <input type="name" formControlName="keyword" class="form-control">
+              <input type="text" formControlName="keyword" class="form-control">
               <button class="btn btn-info">
                 <i class="bi bi-search"></i>
               </button>
             </div>
           </form>
         </div>
-        <table class="table">
-          <thead>
-          <tr>
-            <th>ID</th><th>Name</th><th>Email</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let c of customers | async">
-            <td>{{c.id}}</td>
-            <td>{{c.name}}</td>
-            <td>{{c.email}}</td>
-            <td>
-              <button (click)="handleDeleteCustomer(c)" class="btn btn-danger">
-                <i class="bi bi-trash"></i>
-              </button>
-            </td>
-            <td>
-              <button (click)="handleCustomerAccounts(c)" class="btn btn-success">
-                Accounts
-              </button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let c of listCustomers">
+              <td>{{c.id}}</td>
+              <td>{{c.name}}</td>
+              <td>{{c.email}}</td>
+              <td>
+                <button (click)="handleDeleteCustomer(c)" class="btn btn-danger">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+              <td>
+                <button (click)="handleCustomerAccounts(c)" class="btn btn-success btn-sm">
+                  Accounts
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </ng-container>

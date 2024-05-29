@@ -1,5 +1,55 @@
-<div class="container">
-  <div>{{customerId}}</div>
-  <div>{{customer | json}}</div>
+<div class="container mt-2">
+  <div class="card mb-3">
+    <div class="card-header">Accounts</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th><th>name</th><th>email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{customer.id}}</td>
+          <td>{{customer.name}}</td>
+          <td>{{customer.email}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <ng-container *ngIf="accounts | async as listAccounts; else failureOrLoading">
+    <div class="card">
+      <div class="card-header">Accounts</div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Account ID</th><th>Balance</th><th>Created at</th><th>Type</th><th>Interest Rate</th><th>Over Draft</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let a of accounts | async">
+            <td>{{a.id}}</td>
+            <td>{{a.balance}}</td>
+            <td>{{a.createdAt}}</td>
+            <td>{{a.type}}</td>
+            <th>{{a.interestRate || 0}}</th>
+            <th>{{a.overDraft || 0}}</th>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #failureOrLoading>
+    <ng-container *ngIf="errorMessage; else loading">
+      <div class="text-danger">
+        {{errorMessage}}
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      Loading ......
+    </ng-template>
+  </ng-template>
 </div>
-

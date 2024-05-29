@@ -53,4 +53,9 @@ export class AuthService {
       }
     }
   }
+
+  getRoles(){
+    let roleArr = this.roles.toString().split(" ");
+    return roleArr;
+  }
 }
