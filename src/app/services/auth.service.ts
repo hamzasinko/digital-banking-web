@@ -45,11 +45,13 @@ export class AuthService {
   }
 
   loadAccessTokenFromLocalStorage() {
+    const currentPath = this.router.url;
     if (isPlatformBrowser(this.platformId)) {
       let token = localStorage.getItem('accessToken');
       if (token) {
         this.loadProfile({ 'access-token': token });
-        this.router.navigateByUrl("/admin/customers")
+        if(currentPath.toString().includes('/login')||currentPath.toString().includes('/'))
+          this.router.navigateByUrl("/admin")
       }
     }
   }

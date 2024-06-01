@@ -9,6 +9,7 @@ import {CustomerAccountsComponent} from "./customer-accounts/customer-accounts.c
 import {NotAuthorizedComponent} from "./not-authorized/not-authorized.component";
 import {AuthenticationGuard} from "./guards/authentication.guard";
 import {AuthorizationGuard} from "./guards/authorization.guard";
+import {NewAccountComponent} from "./new-account/new-account.component";
 
 const routes: Routes = [
   {path :"login", component : LoginComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
     children : [
       {path :"customers", component : CustomersComponent},
       {path :"accounts", component : AccountsComponent},
+      {path :"new-account", component : NewAccountComponent, canActivate : [AuthorizationGuard], data : {role:"ADMIN"}},
       {path :"new-customer", component : NewCustomerComponent, canActivate : [AuthorizationGuard], data : {role:"ADMIN"}},
       {path :"customer-accounts/:id", component : CustomerAccountsComponent},
       {path :"notAuthorized", component : NotAuthorizedComponent}

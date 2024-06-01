@@ -18,6 +18,7 @@ import {AuthService} from "./services/auth.service";
 import {AccountsService} from "./services/accounts.service";
 import {CustomerService} from "./services/customer.service";
 import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
+import { NewAccountComponent } from './new-account/new-account.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
     LoginComponent,
     NavbarComponent,
     NewCustomerComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    NewAccountComponent
   ],
   imports: [
     BrowserModule,
