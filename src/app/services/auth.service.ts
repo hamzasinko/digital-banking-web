@@ -50,7 +50,7 @@ export class AuthService {
       let token = localStorage.getItem('accessToken');
       if (token) {
         this.loadProfile({ 'access-token': token });
-        if(currentPath.toString().includes('/login')||currentPath.toString().includes('/'))
+        if(currentPath.toString()==='/login')
           this.router.navigateByUrl("/admin")
       }
     }

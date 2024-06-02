@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit{
   constructor(private fb:FormBuilder, private authService : AuthService, private router : Router) {
   }
   ngOnInit(): void {
+    this.authService.loadAccessTokenFromLocalStorage()
     this.formLogin=this.fb.group({
       username : this.fb.control(""),
       password : this.fb.control("")
